@@ -31,4 +31,20 @@
     margin: 10;
     padding: 10;
   }
+  .proceed-button {
+    background-color: #ffffff;
+    color: #007bff;
+    border: 1px solid #007bff;
+    border-width: 2px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+
+  .proceed-button:hover {
+    border-color: black;
+    border-width: 2px;
+    color: black;
+  }
   

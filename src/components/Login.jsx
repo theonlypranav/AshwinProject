@@ -86,6 +86,9 @@ const Login = ({ login, logout, setEmail, setPassword, session }) => {
                 <button type="button" onClick={logout}>
                   Log Out
                 </button>
+                <button type="button" className="proceed-button">
+                  Proceed to Dashboard
+                </button>
               </div>
             </>
           )}
