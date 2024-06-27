@@ -7,10 +7,15 @@ function MyComponent() {
   const [dropdown, setDropdown] = useState(false);
   const dropdownRef = useRef(null);
   const [maxWidth, setMaxWidth] = useState('auto');
+  //const [toggleOn, setToggleOn] = useState(false);
 
   const toggleDropdown = () => {
     setDropdown(!dropdown);
   };
+
+  /*const toggleSlider = () => {
+    setToggleOn(!toggleOn);
+  };*/
 
   useEffect(() => {
     if (dropdownRef.current) {
@@ -60,6 +65,13 @@ function MyComponent() {
           </b>
         </ul>
       </div>
+      {/*<div className="toggle-container">
+        <label className="switch">
+          <input type="checkbox" onClick={toggleSlider} checked={toggleOn} />
+          <span className="slider round"></span>
+        </label>
+        <p className="toggle-label">Toggle State: {toggleOn ? 'ON' : 'OFF'}</p>
+      </div>*/}
     </div>
   );
 }

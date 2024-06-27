@@ -7,6 +7,11 @@ import { FaEyeSlash } from "react-icons/fa6";
 
 const Login = ({ login, logout, setEmail, setPassword, session }) => {
   const [showPassword, setShowPassword] = useState(false);
+  const [toggleOn, setToggleOn] = useState(false);
+
+  const toggleSlider = () => {
+    setToggleOn(!toggleOn);
+  };
 
   return (
     <div className="login-main">
@@ -89,6 +94,19 @@ const Login = ({ login, logout, setEmail, setPassword, session }) => {
                 <button type="button" className="proceed-button">
                   <b>Go to Dashboard</b>
                 </button>
+              </div>
+              <div className="toggle-container">
+                <label className="switch">
+                  <input
+                    type="checkbox"
+                    onClick={toggleSlider}
+                    checked={toggleOn}
+                  />
+                  <span className="slider round"></span>
+                </label>
+                <p className="toggle-label">
+                  <b>Are you actively working: {toggleOn ? "YES" : "NO"}</b>
+                </p>
               </div>
             </>
           )}
