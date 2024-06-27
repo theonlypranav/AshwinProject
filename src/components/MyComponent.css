@@ -42,7 +42,7 @@
   
   .upper-nav ul li {
     display: inline-block;
-    margin-right: 10px; /* Adjust spacing between items */
+    margin-right: 20px; /* Adjust spacing between items */
   }
   
   .upper-nav ul li a {
