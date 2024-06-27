@@ -51,6 +51,12 @@
     margin: 10;
     padding: 10;
   }
+
+  .upper-nav ul li:hover {
+    color: rgb(199, 223, 233); /* Darken background on hover */
+    border-radius: 5px; /* Rounded corners on hover */
+  }
+  
   .proceed-button {
     background-color: #007bff;
   padding: 10px;
@@ -85,6 +91,7 @@
   }
   
   .dropdown li {
+    color: white;
     padding: 10px 20px;
     white-space: nowrap;
   }
