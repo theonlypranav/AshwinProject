@@ -22,7 +22,7 @@ const Login = ({ login, logout, setEmail, setPassword, session }) => {
               </div>
               <div className="login-center">
                 <h3>ASHWIN Portal</h3>
-                <h2>Welcome back, ASHA worker!</h2>
+                <h2>Welcome back, ASHA Worker!</h2>
                 <p>Please enter your login details</p>
                 <form>
                   <input
