@@ -67,4 +67,32 @@
     border: 3px solid black;
     color: #007bff;
   }
+  /* Dropdown Menu */
+  .dropdown-item {
+    position: relative;
+  }
   
+  .dropdown {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #007bff;
+    list-style-type: none;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    width: auto; /* Default to auto width */
+  }
+  
+  .dropdown li {
+    padding: 10px 20px;
+    white-space: nowrap;
+  }
+  
+  .dropdown li:hover {
+    background-color: #000000;
+    width: 100%;
+  }
+  .dropdown.show {
+    display: block; /* Show dropdown when .show class is applied */
+  }
