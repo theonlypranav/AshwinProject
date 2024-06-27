@@ -18,7 +18,7 @@ const Login = ({ login, logout, setEmail, setPassword, session }) => {
           {!session ? (
             <>
               <div className="login-logo">
-                <img src={Logo} alt="" />
+                <img src={Logo} alt="" style={{ width: '150px', height: 'auto' }} />
               </div>
               <div className="login-center">
                 <h3>ASHWIN Portal</h3>
@@ -74,7 +74,7 @@ const Login = ({ login, logout, setEmail, setPassword, session }) => {
                 </form>
               </div>
 
-              <p className="login-bottom-p">
+              <p className="login-bottom-p" style={{ marginTop: '10px' }}>
                 Don't have an account? <a href="#">Sign Up</a>
               </p>
             </>

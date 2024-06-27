@@ -80,7 +80,9 @@ body{
 .login-center{
   text-align: center;
 }
-
+.login-bottom-p {
+  margin-top: 10px; /* Adjust margin-top as needed */
+}
 .login-center p{
   font-weight: 400;
   font-size: 2rem;
