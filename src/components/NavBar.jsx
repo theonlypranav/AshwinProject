@@ -11,6 +11,7 @@ function MyComponent() {
           <li>Ashwin Dawa Prapatra</li>
           <li>Department Login</li>
           <li>Notices</li>
+          <li>NIC Bihar</li>
           </b>
         </ul>
       </div>
