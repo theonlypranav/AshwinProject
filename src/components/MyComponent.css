@@ -1,0 +1,34 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .upper-nav {
+    color: white;
+    font-size: 15px;
+    width: 100%;
+    background-color: #007bff; /* Dark blue background color */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+  }
+  
+  .upper-nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .upper-nav ul li {
+    display: inline-block;
+    margin-right: 10px; /* Adjust spacing between items */
+  }
+  
+  .upper-nav ul li a {
+    color: white; /* White text color */
+    text-decoration: none; /* Remove underline from links */
+    margin: 10;
+    padding: 10;
+  }
+  
