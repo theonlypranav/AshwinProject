@@ -83,11 +83,11 @@ const Login = ({ login, logout, setEmail, setPassword, session }) => {
               <h2>Welcome back, you are logged in as:</h2>
               <h1>{session.email}</h1>
               <div className="login-center-buttons">
-                <button type="button" onClick={logout}>
-                  Log Out
+                <button type="button" classname="log-out" onClick={logout}>
+                 <b>Log Out</b>
                 </button>
                 <button type="button" className="proceed-button">
-                  Proceed to Dashboard
+                  <b>Go to Dashboard</b>
                 </button>
               </div>
             </>

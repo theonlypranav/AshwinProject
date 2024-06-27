@@ -159,8 +159,11 @@ form button[type='button'] {
 }
 
 .login-center-buttons button:nth-child(1){
-  background-color: black;
+  background-color: #007bff;
+  padding: 10px;
+  border-radius: 50px;
   color: white;
+  font-size: 18px;
   border: 3px solid black;
 }
 
@@ -199,4 +202,5 @@ form button[type='button'] {
 .login-bottom-p a:hover{
   text-decoration: underline;
 }
+
 
