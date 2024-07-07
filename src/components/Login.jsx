@@ -4,6 +4,7 @@ import Logo from "../assets/image.png";
 import GoogleSvg from "../assets/image-copy.png";
 import { FaEye } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const Login = ({ login, logout, setEmail, setPassword, session }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -91,9 +92,9 @@ const Login = ({ login, logout, setEmail, setPassword, session }) => {
                 <button type="button" classname="log-out" onClick={logout}>
                  <b>Log Out</b>
                 </button>
-                <button type="button" className="proceed-button">
+                <Link to={"add-activity"} className="proceed-button">
                   <b>Go to Dashboard</b>
-                </button>
+                </Link>
               </div>
               <div className="toggle-container">
                 <label className="switch">

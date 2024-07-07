@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import Login from "./components/Login";
 import NavBar from "./components/NavBar";
 import { createClient } from "@supabase/supabase-js";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SelectDate from "./components/SelectDate";
 
 const supabase = createClient(
   "https://gffbqldvokpadhsmcrdj.supabase.co",
@@ -49,16 +51,26 @@ function App() {
   };
 
   return (
-    <div>
-      <NavBar />
-      <Login
-        login={login}
-        logout={logout}
-        setEmail={setEmail}
-        setPassword={setPassword}
-        session={session}
-      />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="add-activity" element= {<SelectDate/>} />
+        <Route
+          index
+          element={
+            <div>
+              <NavBar />
+              <Login
+                login={login}
+                logout={logout}
+                setEmail={setEmail}
+                setPassword={setPassword}
+                session={session}
+              />
+            </div>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
