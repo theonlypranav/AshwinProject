@@ -56,7 +56,7 @@ export default function SelectDate() {
       alignItems: "center",
     },
     formTitle: {
-      fontSize: "18px",
+      fontSize: "20px",  // Increased font size for form title
       marginBottom: "20px",
       alignItems: "center",
     },
@@ -71,26 +71,30 @@ export default function SelectDate() {
       display: "block",
       marginBottom: "5px",
       fontWeight: "bold",
+      fontSize: "16px",  // Increased font size for labels
     },
     select: {
       width: "200px",
-      padding: "5px",
+      padding: "8px",  // Increased padding for select inputs
       borderRadius: "3px",
       border: "1px solid #ccc",
+      fontSize: "16px",  // Increased font size for select inputs
     },
     input: {
       width: "200px",
-      padding: "5px",
+      padding: "8px",  // Increased padding for input fields
       borderRadius: "3px",
       border: "1px solid #ccc",
+      fontSize: "16px",  // Increased font size for input fields
     },
     button: {
       backgroundColor: "#007BFF",
       color: "white",
-      padding: "10px 20px",
+      padding: "12px 24px",  // Increased padding for buttons
       border: "none",
       borderRadius: "3px",
       cursor: "pointer",
+      fontSize: "16px",  // Increased font size for buttons
     },
     footer: {
       backgroundColor: "#003366",
@@ -108,9 +112,13 @@ export default function SelectDate() {
     },
     formRow: {
       display: "flex",
-      gap: "20px",
+      gap: "10px",  // Reduced gap between elements in form rows
       justifyContent: "center",
       alignItems: "center",
+      width: "100%",  // Ensures form rows take full width
+    },
+    radioLabel: {
+      fontSize: "16px",  // Font size for radio button labels
     },
   };
 
@@ -125,6 +133,7 @@ export default function SelectDate() {
   const handleSaveClick = () => {
     alert("Activity details have been saved! Payment will be processed");
   };
+
   return (
     <div style={styles.container}>
       <img
@@ -181,25 +190,28 @@ export default function SelectDate() {
           <div style={styles.formGroup}>
             <div style={styles.formRow}>
               <div>
-                <label style={styles.label}>Payment</label>
+                <label style={styles.label}>भुगतान</label>
                 <select style={styles.select}>
                   <option value="">Select payment</option>
-                  <option value="option1">By Cash</option>
-                  <option value="option2">By Bank Account</option>
-                </select>
-              </div>
-              <div>
-                <label style={styles.label}>Activity Type</label>
-                <select style={styles.select}>
-                  <option value="">Select activity type</option>
-                  <option value="type1">Community Service</option>
-                  <option value="type2">Private Health</option>
+                  <option value="option1">By Cash (नकद) </option>
+                  <option value="option2">By Bank Account (बैंक खाता) </option>
                 </select>
               </div>
             </div>
             <div style={styles.formRow}>
               <div>
-                <label style={styles.label}>Duration of Activity</label>
+                <label style={styles.label}>गतिविधि के प्रकार</label>
+                <div style={{ display: "flex", gap: "10px" }}>
+                  <input type="radio" id="public" name="activityType" />
+                  <label style={styles.radioLabel} htmlFor="public"> सार्वजनिक (Public)</label>
+                  <input type="radio" id="community" name="activityType" />
+                  <label style={styles.radioLabel} htmlFor="community"> सामुदायिक सेवा (Community) </label>
+                </div>
+              </div>
+            </div>
+            <div style={styles.formRow}>
+              <div>
+                <label style={styles.label}>गतिविधि की अवधि</label>
                 <select style={styles.select}>
                   <option value="">Select range</option>
                   <option value="option1">0 to 2 weeks</option>
@@ -208,17 +220,17 @@ export default function SelectDate() {
                 </select>
               </div>
               <div>
-                <label style={styles.label}>Number of Absent Days</label>
+                <label style={styles.label}>अनुपस्थित दिनों की संख्या</label>
                 <input type="text" style={styles.input} />
               </div>
             </div>
             <div style={styles.formRow}>
               <div>
-                <label style={styles.label}>Activity Code</label>
+                <label style={styles.label}>गतिविधि कोड (Activity Code) </label>
                 <input type="text" style={styles.input} />
               </div>
               <div>
-                <label style={styles.label}>No of Beneficiaries</label>
+                <label style={styles.label}>लाभार्थियों की संख्या</label>
                 <select style={styles.select}>
                   <option value="">Select number</option>
                   <option value="1">1-5</option>
