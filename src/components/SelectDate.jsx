@@ -235,7 +235,7 @@ export default function SelectDate() {
           </div>
         )}
       </main>
-
+      
       <footer style={styles.footer}>
         <p>Developed by NIC, Bihar State Centre</p>
       </footer>
