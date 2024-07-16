@@ -1,23 +1,23 @@
 import { useState } from "react";
 
 export default function SelectDate() {
-  const [selectedYear, setSelectedYear] = useState("2020-2021");
+  const [selectedYear, setSelectedYear] = useState("");
   const [selectedMonth, setSelectedMonth] = useState("");
   const [showNewForm, setShowNewForm] = useState(false);
 
   const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    "जनवरी",
+    "फ़रवरी",
+    "मार्च",
+    "अप्रैल",
+    "मई",
+    "जून",
+    "जुलाई",
+    "अगस्त",
+    "सितंबर",
+    "अक्टूबर",
+    "नवंबर",
+    "दिसंबर",
   ];
 
   const styles = {
@@ -123,6 +123,10 @@ export default function SelectDate() {
   };
 
   const handleProceedClick = () => {
+    if (selectedYear === "" || selectedMonth === "") {
+      alert("Choose Month and Year correctly!");
+      return;
+    }
     setShowNewForm(true);
   };
 
@@ -131,7 +135,7 @@ export default function SelectDate() {
   };
 
   const handleSaveClick = () => {
-    alert("Activity details have been saved! Payment will be processed");
+    alert("Activity details have been saved! Payment will be processed.");
   };
 
   return (
@@ -163,6 +167,7 @@ export default function SelectDate() {
                 onChange={(e) => setSelectedYear(e.target.value)}
                 style={styles.select}
               >
+                <option value="">Select Year</option>
                 <option value="2020-2021">2020-2021</option>
                 <option value="2021-2022">2021-2022</option>
                 <option value="2022-2023">2022-2023</option>
@@ -176,7 +181,7 @@ export default function SelectDate() {
                 onChange={(e) => setSelectedMonth(e.target.value)}
                 style={styles.select}
               >
-                <option value="">Select month</option>
+                <option value="">Select Month</option>
                 {months.map((month) => (
                   <option key={month} value={month.toLowerCase()}>
                     {month}
@@ -190,28 +195,28 @@ export default function SelectDate() {
           <div style={styles.formGroup}>
             <div style={styles.formRow}>
               <div>
-                <label style={styles.label}>भुगतान</label>
+                <label style={styles.label}>Payment</label>
                 <select style={styles.select}>
                   <option value="">Select payment</option>
-                  <option value="option1">By Cash (नकद) </option>
-                  <option value="option2">By Bank Account (बैंक खाता) </option>
+                  <option value="option1">By Cash</option>
+                  <option value="option2">By Bank Account</option>
                 </select>
               </div>
             </div>
             <div style={styles.formRow}>
               <div>
-                <label style={styles.label}>गतिविधि के प्रकार</label>
+                <label style={styles.label}>Activity Type</label>
                 <div style={{ display: "flex", gap: "10px" }}>
                   <input type="radio" id="public" name="activityType" />
-                  <label style={styles.radioLabel} htmlFor="public"> सार्वजनिक (Public)</label>
+                  <label style={styles.radioLabel} htmlFor="public">Public</label>
                   <input type="radio" id="community" name="activityType" />
-                  <label style={styles.radioLabel} htmlFor="community"> सामुदायिक सेवा (Community) </label>
+                  <label style={styles.radioLabel} htmlFor="community">Community</label>
                 </div>
               </div>
             </div>
             <div style={styles.formRow}>
               <div>
-                <label style={styles.label}>गतिविधि की अवधि</label>
+                <label style={styles.label}>Duration of Activity</label>
                 <select style={styles.select}>
                   <option value="">Select range</option>
                   <option value="option1">0 to 2 weeks</option>
@@ -220,17 +225,17 @@ export default function SelectDate() {
                 </select>
               </div>
               <div>
-                <label style={styles.label}>अनुपस्थित दिनों की संख्या</label>
+                <label style={styles.label}>Number of Absent Days</label>
                 <input type="text" style={styles.input} />
               </div>
             </div>
             <div style={styles.formRow}>
               <div>
-                <label style={styles.label}>गतिविधि कोड (Activity Code) </label>
+                <label style={styles.label}>Activity Code</label>
                 <input type="text" style={styles.input} />
               </div>
               <div>
-                <label style={styles.label}>लाभार्थियों की संख्या</label>
+                <label style={styles.label}>No of Beneficiaries</label>
                 <select style={styles.select}>
                   <option value="">Select number</option>
                   <option value="1">1-5</option>
