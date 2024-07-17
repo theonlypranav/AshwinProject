@@ -4,6 +4,7 @@ export default function SelectDate() {
   const [selectedYear, setSelectedYear] = useState("");
   const [selectedMonth, setSelectedMonth] = useState("");
   const [showNewForm, setShowNewForm] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const months = [
     "जनवरी",
@@ -56,7 +57,7 @@ export default function SelectDate() {
       alignItems: "center",
     },
     formTitle: {
-      fontSize: "20px",  // Increased font size for form title
+      fontSize: "20px", // Increased font size for form title
       marginBottom: "20px",
       alignItems: "center",
     },
@@ -71,30 +72,39 @@ export default function SelectDate() {
       display: "block",
       marginBottom: "5px",
       fontWeight: "bold",
-      fontSize: "16px",  // Increased font size for labels
+      fontSize: "16px", // Increased font size for labels
     },
     select: {
       width: "200px",
-      padding: "8px",  // Increased padding for select inputs
+      padding: "8px", // Increased padding for select inputs
       borderRadius: "3px",
       border: "1px solid #ccc",
-      fontSize: "16px",  // Increased font size for select inputs
+      fontSize: "16px", // Increased font size for select inputs
     },
     input: {
       width: "200px",
-      padding: "8px",  // Increased padding for input fields
+      padding: "8px", // Increased padding for input fields
       borderRadius: "3px",
       border: "1px solid #ccc",
-      fontSize: "16px",  // Increased font size for input fields
+      fontSize: "16px", // Increased font size for input fields
     },
     button: {
       backgroundColor: "#007BFF",
       color: "white",
-      padding: "12px 24px",  // Increased padding for buttons
+      padding: "12px 24px", // Increased padding for buttons
       border: "none",
       borderRadius: "3px",
       cursor: "pointer",
-      fontSize: "16px",  // Increased font size for buttons
+      fontSize: "16px", // Increased font size for buttons
+    },
+    backButton: {
+      backgroundColor: "#6c757d", // Different background color for the Back button
+      color: "white",
+      padding: "12px 24px", // Increased padding for buttons
+      border: "none",
+      borderRadius: "3px",
+      cursor: "pointer",
+      fontSize: "16px", // Increased font size for buttons
     },
     footer: {
       backgroundColor: "#003366",
@@ -112,13 +122,13 @@ export default function SelectDate() {
     },
     formRow: {
       display: "flex",
-      gap: "10px",  // Reduced gap between elements in form rows
+      gap: "10px", // Reduced gap between elements in form rows
       justifyContent: "center",
       alignItems: "center",
-      width: "100%",  // Ensures form rows take full width
+      width: "100%", // Ensures form rows take full width
     },
     radioLabel: {
-      fontSize: "16px",  // Font size for radio button labels
+      fontSize: "16px", // Font size for radio button labels
     },
   };
 
@@ -135,7 +145,14 @@ export default function SelectDate() {
   };
 
   const handleSaveClick = () => {
-    alert("Activity details have been saved! Payment will be processed.");
+    setFormSubmitted(true);
+  };
+
+  const handleDashboardClick = () => {
+    setFormSubmitted(false);
+    setShowNewForm(false);
+    setSelectedYear("");
+    setSelectedMonth("");
   };
 
   return (
@@ -157,8 +174,17 @@ export default function SelectDate() {
       </nav>
 
       <main style={styles.main}>
-        <h3 style={styles.formTitle}>आशा दावा का प्रपत्र</h3>
-        {!showNewForm ? (
+        <h3 style={styles.formTitle}>आशा दावा का प्रपत्र (Dashboard) </h3>
+        <h2 style={styles.formTitle}> ASHA Workers Compensation Portal </h2>
+        {formSubmitted ? (
+          <div style={styles.formGroup}>
+            <h2>Payment will be processed soon! Your details have been sent to Office!
+            </h2>
+            <button onClick={handleDashboardClick} style={styles.button}>
+              Go Back to Dashboard
+            </button>
+          </div>
+        ) : !showNewForm ? (
           <div style={styles.formGroup}>
             <div>
               <label style={styles.label}>वित्तीय वर्ष [*]</label>
@@ -195,28 +221,28 @@ export default function SelectDate() {
           <div style={styles.formGroup}>
             <div style={styles.formRow}>
               <div>
-                <label style={styles.label}>Payment</label>
+                <label style={styles.label}>भुगतान (Payment) </label>
                 <select style={styles.select}>
                   <option value="">Select payment</option>
-                  <option value="option1">By Cash</option>
-                  <option value="option2">By Bank Account</option>
+                  <option value="option1">नकद (By Cash) </option>
+                  <option value="option2">बैंक खाता (By Bank Account)</option>
                 </select>
               </div>
             </div>
             <div style={styles.formRow}>
               <div>
-                <label style={styles.label}>Activity Type</label>
+                <label style={styles.label}>क्रिया के प्रकार (Activity Type) </label>
                 <div style={{ display: "flex", gap: "10px" }}>
                   <input type="radio" id="public" name="activityType" />
-                  <label style={styles.radioLabel} htmlFor="public">Public</label>
+                  <label style={styles.radioLabel} htmlFor="public">सार्वजनिक गतिविधि </label>
                   <input type="radio" id="community" name="activityType" />
-                  <label style={styles.radioLabel} htmlFor="community">Community</label>
+                  <label style={styles.radioLabel} htmlFor="community">सामुदायिक सेवा</label>
                 </div>
               </div>
             </div>
             <div style={styles.formRow}>
               <div>
-                <label style={styles.label}>Duration of Activity</label>
+                <label style={styles.label}>गतिविधि की अवधि </label>
                 <select style={styles.select}>
                   <option value="">Select range</option>
                   <option value="option1">0 to 2 weeks</option>
@@ -225,17 +251,17 @@ export default function SelectDate() {
                 </select>
               </div>
               <div>
-                <label style={styles.label}>Number of Absent Days</label>
-                <input type="text" style={styles.input} />
+                <label style={styles.label}>अनुपस्थित दिनों की संख्या</label>
+                <input type="text" placeholder="Enter number of days" style={styles.input} />
               </div>
             </div>
             <div style={styles.formRow}>
               <div>
-                <label style={styles.label}>Activity Code</label>
-                <input type="text" style={styles.input} />
+                <label style={styles.label}>गतिविधि कोड</label>
+                <input type="text" placeholder="Enter activity code" style={styles.input} />
               </div>
               <div>
-                <label style={styles.label}>No of Beneficiaries</label>
+                <label style={styles.label}>लाभार्थियों की संख्या</label>
                 <select style={styles.select}>
                   <option value="">Select number</option>
                   <option value="1">1-5</option>
@@ -246,15 +272,20 @@ export default function SelectDate() {
             </div>
             
             <div style={styles.buttonGroup}>
-              <button onClick={handleBackClick} style={styles.button}>Back</button>
-              <button onClick={handleSaveClick} style={styles.button}>Save</button>
+            <button onClick={handleBackClick} style={styles.backButton}>
+                Back
+              </button>
+              <button onClick={handleSaveClick} style={styles.button}>
+                Save
+              </button>
+              
             </div>
           </div>
         )}
       </main>
-      
+
       <footer style={styles.footer}>
-        <p>Developed by NIC, Bihar State Centre</p>
+        <p>&copy; 2023 आशा दावा का प्रपत्र. All rights reserved.</p>
       </footer>
     </div>
   );
