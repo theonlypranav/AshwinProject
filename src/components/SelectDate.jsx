@@ -1,8 +1,15 @@
 import { useState } from "react";
+import supabase from "../supabase";
 
 export default function SelectDate() {
   const [selectedYear, setSelectedYear] = useState("");
-  const [selectedMonth, setSelectedMonth] = useState("");
+  const [selectedMonth, setSelectedMonth] = useState(0);
+  const [selectedPayment, setSelectedPayment] = useState(0);
+  const [selectedActivity, setSelectedActivity] = useState(0);
+  const [selectedRange, setSelectedRange] = useState("");
+  const [noOfDays, setNoOfDays] = useState(0);
+  const [activityCode, setActivityCode] = useState("");
+  const [selectedRecipients, setSelectedRecipients] = useState("");
   const [showNewForm, setShowNewForm] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
 
@@ -137,6 +144,8 @@ export default function SelectDate() {
       alert("Choose Month and Year correctly!");
       return;
     }
+    console.log(selectedYear);
+    console.log(selectedMonth);
     setShowNewForm(true);
   };
 
@@ -144,9 +153,22 @@ export default function SelectDate() {
     setShowNewForm(false);
   };
 
-  const handleSaveClick = () => {
+  async function handleSaveClick() {
+    const { err } = await supabase.from("Activities").insert({
+      year: selectedYear,
+      month: selectedMonth,
+      payment_type: selectedPayment,
+      activity_type: selectedActivity,
+      week_range: selectedRange,
+      no_of_days: noOfDays,
+      activity_code: activityCode,
+      no_of_recipients: selectedRecipients,
+      status: "pending",
+    });
+    if (err)
+      console.alert(err);
     setFormSubmitted(true);
-  };
+  }
 
   const handleDashboardClick = () => {
     setFormSubmitted(false);
@@ -178,7 +200,9 @@ export default function SelectDate() {
         <h2 style={styles.formTitle}> ASHA Workers Compensation Portal </h2>
         {formSubmitted ? (
           <div style={styles.formGroup}>
-            <h2>Payment will be processed soon! Your details have been sent to Office!
+            <h2>
+              Payment will be processed soon! Your details have been sent to
+              Office!
             </h2>
             <button onClick={handleDashboardClick} style={styles.button}>
               Go Back to Dashboard
@@ -208,77 +232,113 @@ export default function SelectDate() {
                 style={styles.select}
               >
                 <option value="">Select Month</option>
-                {months.map((month) => (
-                  <option key={month} value={month.toLowerCase()}>
+                {months.map((month, idx) => (
+                  <option key={idx} value={idx + 1}>
                     {month}
                   </option>
                 ))}
               </select>
             </div>
-            <button onClick={handleProceedClick} style={styles.button}>Proceed</button>
+            <button onClick={handleProceedClick} style={styles.button}>
+              Proceed
+            </button>
           </div>
         ) : (
           <div style={styles.formGroup}>
             <div style={styles.formRow}>
               <div>
                 <label style={styles.label}>भुगतान (Payment) </label>
-                <select style={styles.select}>
+                <select
+                  style={styles.select}
+                  onChange={(e) => setSelectedPayment(e.target.value)}
+                >
                   <option value="">Select payment</option>
-                  <option value="option1">नकद (By Cash) </option>
-                  <option value="option2">बैंक खाता (By Bank Account)</option>
+                  <option value="1">नकद (By Cash) </option>
+                  <option value="2">बैंक खाता (By Bank Account)</option>
                 </select>
               </div>
             </div>
             <div style={styles.formRow}>
               <div>
-                <label style={styles.label}>क्रिया के प्रकार (Activity Type) </label>
+                <label style={styles.label}>
+                  क्रिया के प्रकार (Activity Type){" "}
+                </label>
                 <div style={{ display: "flex", gap: "10px" }}>
-                  <input type="radio" id="public" name="activityType" />
-                  <label style={styles.radioLabel} htmlFor="public">सार्वजनिक गतिविधि </label>
-                  <input type="radio" id="community" name="activityType" />
-                  <label style={styles.radioLabel} htmlFor="community">सामुदायिक सेवा</label>
+                  <input
+                    type="radio"
+                    id="public"
+                    name="activityType"
+                    onClick={() => setSelectedActivity(1)}
+                  />
+                  <label style={styles.radioLabel} htmlFor="public">
+                    सार्वजनिक गतिविधि{" "}
+                  </label>
+                  <input
+                    type="radio"
+                    id="community"
+                    name="activityType"
+                    onClick={() => setSelectedActivity(2)}
+                  />
+                  <label style={styles.radioLabel} htmlFor="community">
+                    सामुदायिक सेवा
+                  </label>
                 </div>
               </div>
             </div>
             <div style={styles.formRow}>
               <div>
                 <label style={styles.label}>गतिविधि की अवधि </label>
-                <select style={styles.select}>
+                <select
+                  style={styles.select}
+                  onChange={(e) => setSelectedRange(e.target.value)}
+                >
                   <option value="">Select range</option>
-                  <option value="option1">0 to 2 weeks</option>
-                  <option value="option2">2 weeks to 6 weeks</option>
-                  <option value="option3">6 weeks to 10 weeks</option>
+                  <option value="0-2">0 to 2 weeks</option>
+                  <option value="2-6">2 weeks to 6 weeks</option>
+                  <option value="6-10">6 weeks to 10 weeks</option>
                 </select>
               </div>
               <div>
                 <label style={styles.label}>अनुपस्थित दिनों की संख्या</label>
-                <input type="text" placeholder="Enter number of days" style={styles.input} />
+                <input
+                  type="text"
+                  placeholder="Enter number of days"
+                  onChange={(e) => setNoOfDays(e.target.value)}
+                  style={styles.input}
+                />
               </div>
             </div>
             <div style={styles.formRow}>
               <div>
                 <label style={styles.label}>गतिविधि कोड</label>
-                <input type="text" placeholder="Enter activity code" style={styles.input} />
+                <input
+                  type="text"
+                  onChange={(e) => setActivityCode(e.target.value)}
+                  placeholder="Enter activity code"
+                  style={styles.input}
+                />
               </div>
               <div>
                 <label style={styles.label}>लाभार्थियों की संख्या</label>
-                <select style={styles.select}>
+                <select
+                  style={styles.select}
+                  onChange={(e) => setSelectedRecipients(e.target.value)}
+                >
                   <option value="">Select number</option>
-                  <option value="1">1-5</option>
-                  <option value="2">6-15</option>
-                  <option value="3">More than 15</option>
+                  <option value="1-5">1-5</option>
+                  <option value="6-15">6-15</option>
+                  <option value="15+">More than 15</option>
                 </select>
               </div>
             </div>
-            
+
             <div style={styles.buttonGroup}>
-            <button onClick={handleBackClick} style={styles.backButton}>
+              <button onClick={handleBackClick} style={styles.backButton}>
                 Back
               </button>
               <button onClick={handleSaveClick} style={styles.button}>
                 Save
               </button>
-              
             </div>
           </div>
         )}
