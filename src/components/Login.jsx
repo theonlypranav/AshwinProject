@@ -92,8 +92,11 @@ const Login = ({ login, logout, setEmail, setPassword, session }) => {
                 <button type="button" className="log-out" onClick={logout}>
                  <b>Log Out</b>
                 </button>
-                <Link to={"add-activity"} className="proceed-button">
+                <Link to={"dashboard"} className="proceed-button">
                   <b>Go to Dashboard</b>
+                </Link>
+                <Link to={"add-activity"} className="proceed-button">
+                  <b>Add Activity</b>
                 </Link>
               </div>
               <div className="toggle-container">

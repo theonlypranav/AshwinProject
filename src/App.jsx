@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SelectDate from "./components/SelectDate";
 import supabase from "./supabase.js"
+import ActivityDisplay from "./components/ActivityDisplay.jsx";
 
 
 function App() {
@@ -49,7 +50,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="add-activity" element= {<SelectDate/>} />
+        <Route path="dashboard" element= {<ActivityDisplay />} />
+        <Route path="add-activity" element= {<SelectDate />} />
         <Route
           index
           element={
