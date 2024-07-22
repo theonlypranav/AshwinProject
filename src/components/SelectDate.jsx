@@ -64,7 +64,7 @@ export default function SelectDate() {
       alignItems: "center",
     },
     formTitle: {
-      fontSize: "20px", // Increased font size for form title
+      fontSize: "20px",
       marginBottom: "20px",
       alignItems: "center",
     },
@@ -79,30 +79,30 @@ export default function SelectDate() {
       display: "block",
       marginBottom: "5px",
       fontWeight: "bold",
-      fontSize: "16px", // Increased font size for labels
+      fontSize: "16px",
     },
     select: {
       width: "200px",
-      padding: "8px", // Increased padding for select inputs
+      padding: "8px",
       borderRadius: "3px",
       border: "1px solid #ccc",
-      fontSize: "16px", // Increased font size for select inputs
+      fontSize: "16px", 
     },
     input: {
       width: "200px",
-      padding: "8px", // Increased padding for input fields
+      padding: "8px",
       borderRadius: "3px",
       border: "1px solid #ccc",
-      fontSize: "16px", // Increased font size for input fields
+      fontSize: "16px",
     },
     button: {
       backgroundColor: "#007BFF",
       color: "white",
-      padding: "12px 24px", // Increased padding for buttons
+      padding: "12px 24px", 
       border: "none",
       borderRadius: "3px",
       cursor: "pointer",
-      fontSize: "16px", // Increased font size for buttons
+      fontSize: "16px", 
     },
     backButton: {
       backgroundColor: "#6c757d", // Different background color for the Back button
